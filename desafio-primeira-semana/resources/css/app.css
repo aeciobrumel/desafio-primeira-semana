@@ -10,18 +10,7 @@
         "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
         "Noto Color Emoji";
 }
-
 form {
-    max-width: 300px;
-    background-color: aqua;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-body {
     background-color: #993131;
     font-family: var(--font-sans);
-}
-.container {
-    background-color: aqua;
 }
