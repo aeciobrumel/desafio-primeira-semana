@@ -1,5 +1,4 @@
 .background-section {
-    background-color: aqua;
     background-position: center;
     background-image: url("../img/bg-login.png");
     background-size: cover;
@@ -10,15 +9,15 @@
     justify-content: center;
 }
 .container-login {
-    background-color: rgba(4, 84, 85, 0.8);
+    background-color: rgba(0, 52, 54, 0.8);
     color: aliceblue;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    padding: 60px;
+    padding: 30px;
     border-radius: 40px;
-    width: 340px;
+    width: 440px;
 }
 
 .form-login {
@@ -27,33 +26,124 @@
     align-items: center;
     justify-content: center;
 }
+
+.container-login p {
+    color: aliceblue;
+    font-weight: 100;
+    font-size: large;
+}
 .form-login input::placeholder {
     color: #025557;
 }
 .form-login input {
-    width: 300px;
+    width: 350px;
     color: #025557;
-    padding: 10px 20px 10px 20px;
     border-radius: 15px;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-left: 15px;
     border: 0px solid #025557;
 }
 .form-login button {
     color: #025557;
     background-color: #ffffff;
-    padding: 10px;
     border-radius: 15px;
     margin-top: 30px;
     margin-bottom: 10px;
     border: 0px solid #025557;
 }
+.form-login button:hover,
+.form-login button:focus,
+.form-login button:active {
+    color: #ffffff;
+    background-color: #025557;
+}
+
+#eja-logo-login {
+    margin-bottom: 30px;
+}
 .container-login a {
     color: aliceblue;
     text-decoration: none;
     padding: 10px;
+    font-size: small;
 }
 .text-center {
     text-align: center;
     font-weight: bold;
+}
+.img-sesc img {
+    width: 80px;
+    height: 70px;
+}
+.img-sesc {
+    width: 160px;
+    height: 160px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #025354;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #ffffff;
+    border-radius: 25px;
+    height: 250px;
+}
+.modal-header {
+    border-bottom: 0px solid red;
+}
+.modal-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.modal-body p {
+    font-size: 25px;
+    font-weight: bold;
+    padding-bottom: 32px;
+}
+.background-login {
+    background-image: url("../img/logincerto-bg.png");
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+}
+.btn-modal {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 30px;
+    margin-top: 30px;
+}
+
+.btn-modal img {
+    width: 38px;
+    height: 38px;
+    margin-right: 20px;
+    margin-top: 20px;
+}
+
+.btn-modal:focus {
+    outline: 2px solid #025354;
+    outline-offset: 2px;
+}
+@media (max-width: 600px) {
+    .background-section {
+        background-image: url("../img/bg-login-mobile.png");
+        background-size: cover;
+        width: 100%;
+        height: 100vh;
+    }
+    .container-login {
+        width: 90%;
+        padding: 20px;
+    }
 }

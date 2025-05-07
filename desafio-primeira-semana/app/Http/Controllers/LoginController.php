@@ -22,13 +22,11 @@ public function authenticate(Request $request): RedirectResponse
         'email' => ['required', 'email'],
         'password' => ['required'],
     ]);
-
     if (Auth::attempt($credentials)) {
         $request->session()->regenerate();
-        return redirect()->intended('home');
+        return redirect()->intended('home')->with('login-success', true);
     }
-
-    return back()->withErrors([
+    return back()->with('login-error',true)->withErrors([
         'email' => 'credenciais inválidas.',
     ])->onlyInput('email');
 
