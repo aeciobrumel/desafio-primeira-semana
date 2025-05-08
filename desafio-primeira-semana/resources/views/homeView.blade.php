@@ -5,11 +5,8 @@
 @section('content')
 
 <section class="background-login container-fluid">
-
-
-
- <!--modal sucesso-->
- <div class="modal fade" id="login-success-modal" role="dialog">
+    <!--modal sucesso-->
+    <div class="modal fade" id="login-success-modal" role="dialog">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">

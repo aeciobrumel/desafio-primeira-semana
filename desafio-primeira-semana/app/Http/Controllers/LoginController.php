@@ -10,27 +10,27 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-//carrega a view de login
-public function login(){
-    return view('loginView');
-}
-
-//função que realiza a autenticação do usuário
-public function authenticate(Request $request): RedirectResponse
-{
-    $credentials = $request->validate([
-        'email' => ['required', 'email'],
-        'password' => ['required'],
-    ]);
-    if (Auth::attempt($credentials)) {
-        $request->session()->regenerate();
-        return redirect()->intended('home')->with('login-success', true);
+    //carrega a view de login
+    public function login(){
+        return view('loginView');
     }
-    return back()->with('login-error',true)->withErrors([
-        'email' => 'credenciais inválidas.',
-    ])->onlyInput('email');
 
-}
+    //função que realiza a autenticação do usuário
+    public function authenticate(Request $request): RedirectResponse
+    {
+        $credentials = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
+        ]);
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+            return redirect()->intended('home')->with('login-success', true);
+        }
+        return back()->with('login-error',true)->withErrors([
+            'email' => 'credenciais inválidas.',
+        ])->onlyInput('email');
+
+    }
 
 }
 
