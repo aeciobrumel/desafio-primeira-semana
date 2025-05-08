@@ -8,7 +8,7 @@ Route::get('/',[LoginController::class, 'login'])->name ('login');
 Route::post('/login', [LoginController::class, 'authenticate']) -> name ('authenticate');
 
 
-
+//Middleware Auth para segurança
 Route::middleware(['auth'])->group(function(){
     Route::get('/home', function () {
 
