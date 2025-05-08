@@ -8,6 +8,10 @@ Route::get('/',[LoginController::class, 'login'])->name ('login');
 Route::post('/login', [LoginController::class, 'authenticate']) -> name ('authenticate');
 
 
-Route::get('/home', function () {
-    return view('homeView');
-})->name ('home');
+
+Route::middleware(['auth'])->group(function(){
+    Route::get('/home', function () {
+
+        return view('homeView');
+    })->name ('home');
+});

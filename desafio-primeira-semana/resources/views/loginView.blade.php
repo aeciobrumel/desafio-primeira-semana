@@ -11,10 +11,10 @@
                     @csrf
                     <p class="text-center">FAÇA SEU LOGIN</p>
                     <div class="form-group">
-                    <input type="email" name="email" class="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="LOGIN" required>
+                        <input type="email" name="email" class="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="LOGIN" required>
                     </div>
                     <div class="form-group">
-                    <input type="password"  name="password" class="form-control form-control-sm" id="exampleInputPassword1" placeholder="SENHA" require>
+                        <input type="password"  name="password" class="form-control form-control-sm" id="exampleInputPassword1" placeholder="SENHA" require>
                     </div>
                     <button type="submit" class="btn btn-primary">
                         <span id="buttonText">Acesse agora</span>    
@@ -73,10 +73,6 @@
                 form.addEventListener('submit', function (event) {
                     // impede envio imediato do formulário
                     event.preventDefault(); 
-                    
-                    // Desabilita botão para evitar múltiplos envios
-                    const submitButton = form.querySelector('button[type="submit"]');
-                    submitButton.disabled = true
 
                             // Mostra o overlay
                     // Aguarda 1 segundo antes de enviar o formulário e mostra o overlay  com spinner
