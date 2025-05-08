@@ -23,21 +23,9 @@
             </form>
         </div>
     </div>
-    <!--modal erro -->
-    <div class="modal fade" id="login-error-modal" role="dialog">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="btn-close btn-modal" data-bs-dismiss="modal" aria-label="Fechar">
-                        <img src="{{ asset('img/x-circle.svg') }}" alt="">
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p>Erro no login</p>
-                </div>
-            </div>
-        </div>
-    </div>
+
+    <x-modal id="login-error-modal" message="Erro no login" />
+    
     <div id="loading-overlay" style="
         display: none;
         position: fixed;
