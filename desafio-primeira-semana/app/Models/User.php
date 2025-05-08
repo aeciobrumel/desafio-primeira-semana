@@ -17,10 +17,19 @@ class User extends Authenticatable
      *
      * @var list<string>
      */
+    /*
+    permissions constrants
+    
+    */
+    const PERMISSION_ADMIN = 1;
+    const PERMISSION_DOCENTE = 2;
+    const PERMISSION_ALUNO = 3;
+
     protected $fillable = [
         'name',
-        'login',
+        'email',
         'password',
+        'permission_level',
     ];
 
     /**
