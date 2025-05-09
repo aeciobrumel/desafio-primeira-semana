@@ -186,6 +186,54 @@
     border-radius: 30px;
 }
 
+/*
+
+card do usuario
+
+*/
+.card-user-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 15px 40px 15px 40px;
+}
+.card-user-left {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.card-user-left .card-user-img {
+    background-color: #ff9e01;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    border-radius: 20px;
+}
+.card-user-data {
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px;
+    height: 30px;
+    justify-content: center;
+}
+.card-user-data-nome {
+    font-size: 18px;
+    font-weight: bold;
+}
+.card-user-data-email {
+    font-size: 15px;
+    font-weight: 400;
+    color: #5b5b5b;
+}
+.card-user-right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 10px;
+}
+
 @media (max-width: 600px) {
     .background-section {
         background-image: url("../img/bg-login-mobile.png");
