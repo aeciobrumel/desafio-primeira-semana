@@ -24,7 +24,6 @@
         </div>
     </div>
 
-    <x-modal id="login-error-modal" message="Erro no login" />
     
     <div id="loading-overlay" style="
         display: none;

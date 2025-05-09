@@ -20,25 +20,22 @@
 </head>
 <body>
     <main>
-        @yield('content')
+    @yield('content')
+    <x-modal id="login-error-modal" message="Erro no login" />
+        <x-modal id="login-success-modal" message="Bem vindo a nossa plataforma!" />
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    
-
   <script>
-    //Script dos modais
-    //Sucesso no login
-    window.onload = function(){
-            @if(session('login-success'))
-                var sucessModal = new bootstrap.Modal(document.getElementById('login-success-modal'));
-                sucessModal.show();
-            @endif
-        }
-    //ero no login
+    //Script dos modais de sucesso e erro no login
     window.onload = function(){
             @if(session('login-error'))
                 var failedModal = new bootstrap.Modal(document.getElementById('login-error-modal'));
                 failedModal.show();
+            @endif
+
+            @if(session('login-success'))
+                var sucessModal = new bootstrap.Modal(document.getElementById('login-success-modal'));
+                sucessModal.show();
             @endif
         }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
