@@ -44,33 +44,6 @@
         </div>
     </div>
 
-    <script>
-        //verifica se existe a session de erro
-        window.onload = function(){
-            @if(session('login-error'))
-                var failedModal = new bootstrap.Modal(document.getElementById('login-error-modal'));
-                failedModal.show();
-            @endif
-        }
-            //escutador de evento para o submit do formulário
-            // adiciona um escutador de evento para o evento 'DOMContentLoaded'
-            document.addEventListener('DOMContentLoaded', function () {
-                const form = document.getElementById('login-form');
-                // Adiciona um escutador de evento para o evento 'submit' do formulário
-                form.addEventListener('submit', function (event) {
-                    // impede envio imediato do formulário
-                    event.preventDefault(); 
-
-                            // Mostra o overlay
-                    // Aguarda 1 segundo antes de enviar o formulário e mostra o overlay  com spinner
-                    document.getElementById('loading-overlay').style.display = 'flex';
-                            setTimeout(() => {
-                                form.submit();
-                            }, 500); // 500 milissegundos = 0,5 segundos
-                });
-            });
-        
-    </script>
 </section>
 
 @endsection

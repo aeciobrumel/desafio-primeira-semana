@@ -23,6 +23,58 @@
         @yield('content')
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
 
+  <script>
+    //Script dos modais
+    //Sucesso no login
+    window.onload = function(){
+            @if(session('login-success'))
+                var sucessModal = new bootstrap.Modal(document.getElementById('login-success-modal'));
+                sucessModal.show();
+            @endif
+        }
+    //ero no login
+    window.onload = function(){
+            @if(session('login-error'))
+                var failedModal = new bootstrap.Modal(document.getElementById('login-error-modal'));
+                failedModal.show();
+            @endif
+        }
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //Script para tela de login
+          //escutador de evento para o submit do formulário
+          // adiciona um escutador de evento para o evento 'DOMContentLoaded'
+      document.addEventListener('DOMContentLoaded', function () {
+          const form = document.getElementById('login-form');
+          // Adiciona um escutador de evento para captar o evento 'submit' do formulário
+          form.addEventListener('submit', function (event) {
+          // impede envio imediato do formulário
+              event.preventDefault(); 
+          // Mostra o overlay com spinner e aguarda meio segundo antes de enviar o formulário
+              document.getElementById('loading-overlay').style.display = 'flex';
+                      setTimeout(() => {
+                          form.submit();
+                      }, 500); // 500 milissegundos = 0,5 segundos
+          });
+      });
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      
+//script logout sidebar
+      function logoutPost() {
+              const formLogout = document.createElement('form');
+              formLogout.method = 'POST';
+              formLogout.action ='{{route('logout')}}';
+
+              const csrf = document.createElement('input');
+              csrf.type = 'hidden';
+              csrf.name= '_token';
+              csrf.value = '{{csrf_token()}}';
+
+              formLogout .appendChild(csrf);
+              document.body.appendChild(formLogout);
+              formLogout.submit();
+          }
+  </script>
 </body>
 </html>
