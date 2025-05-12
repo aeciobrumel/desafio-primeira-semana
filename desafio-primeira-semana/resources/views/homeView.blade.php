@@ -9,25 +9,22 @@
 <div class="container-home">
     <x-sidebar/>
     <div class="home-right">
-        <h1>lista de usuarios: +++</h1>
-        <div class="card card-user">
-             <div class="card-user-content">
-                <div class="card-user-left">
-                    <div class="card-user-img">
-                        <img src="{{asset ('img/user-white.svg')}}" alt="">
-                    </div>
-                    <div class="card-user-data">
-                        <div class="card-user-data-nome"> jorel</div>
-                        <div class="card-user-data-email">jorel@gmail.com</div>
-                    </div>
-                </div>
-                <div class="card-user-right">
-                    <button class="btn-edit-user"><img src="{{asset('img/trash.svg')}}" alt=""></button>
-                    <button class="btn-delete-user"><img src="{{asset('img/note-pencil.svg')}}" alt=""></button>
-                </div>
-            </div>
-        </div>
-
+        <div class="userlist-section-content-header"> 
+            <img class="user-three-img" src="{{asset('img/users-three.svg')}}" alt="">
+            <h1>Usuários</h1>
+            <button class="btn-add-user" onclick="goTocreateUserForm()">
+                <img id='add-user' class="plus-img" src="{{asset('img/plus.svg')}}" alt="">
+            </button>
+         </div>
+      <div class="userlist-users">
+            @foreach($users as $user)
+                <x-card-user 
+                    :userName="$user->name" 
+                    :userEmail="$user->email" 
+                    :userId="$user->id"
+                />
+            @endforeach
+         </div>
     </div>
 </div>
 

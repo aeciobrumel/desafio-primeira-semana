@@ -2,7 +2,7 @@
         <img class="edus-logo-img" src="{{asset ('img/edus-logo.svg')}}" alt="">
 
         <nav class="nav-items">
-            <button class="button-nav-left">
+            <button class="button-nav-left" onclick="window.location='{{ route('home') }}'">
                 <img src="{{asset ('img/house.svg')}}" alt="">
             </button>
             <button class="button-nav-left btn-logout" onclick="logoutPost()" >

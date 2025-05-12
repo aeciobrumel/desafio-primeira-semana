@@ -72,6 +72,22 @@
               document.body.appendChild(formLogout);
               formLogout.submit();
           }
+
+      function goTocreateUserForm(){
+        const formRouteCreateUser = document.createElement('form');
+              formRouteCreateUser.method = 'get';
+              formRouteCreateUser.action ='{{route('users.create')}}';
+
+              const csrf = document.createElement('input');
+              csrf.type = 'hidden';
+              csrf.name= '_token';
+              csrf.value = '{{csrf_token()}}';
+
+              formRouteCreateUser .appendChild(csrf);
+              document.body.appendChild(formRouteCreateUser);
+              formRouteCreateUser.submit();
+      }    
+      
   </script>
 </body>
 </html>
