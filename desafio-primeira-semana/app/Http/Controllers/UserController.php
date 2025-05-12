@@ -11,9 +11,7 @@ class UserController extends Controller
 {
     //listar usuarios na home
     public function userList(){
-        
-    $users = DB::select('select * from users');
-
+    $users = DB::select('select * from users'); //seleciono todos os users do banco
     return view('homeView', ['users'=> $users]);//passo todos os usuários pra home
 }
 }
