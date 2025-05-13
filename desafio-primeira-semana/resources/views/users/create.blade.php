@@ -10,14 +10,14 @@
     <x-sidebar/>
     <div class="home-right">
         <div class="userlist-section-content-header"> 
-            <img class="user-three-img" src="{{asset('img/users-three.svg')}}" alt="">
-            <h1>Usuários</h1>
             <button class="btn-add-arrow-left" onclick="window.location='{{route('home')}}'">
                 <img id='arrow-left-img' class="plus-img" src="{{asset('img/arrow-left.svg')}}" alt="">
-            </button>
-         </div>
-         <form class="form-cadastro" id="form-cadastro" method='post' action="{{route ('users.store')}}">
-         @csrf
+            </button>    
+            <h2>Novo usuário</h2>
+            <img class="user-three-img" src="{{asset('img/users-three.svg')}}" alt="">
+        </div>
+        <form class="form-cadastro" id="form-cadastro" method='post' action="{{route ('users.store')}}">
+            @csrf
             <div class="input-group mb-3">
                 <span class="input-group-text" id="inputGroup-sizing-default">Nome:</span>
                 <input name="name" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
@@ -35,17 +35,19 @@
                     <span class="input-group-text" id="inputGroup-sizing-default">confirmar senha:</span>
                     <input name="confirm_password" type="password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                 </div>
+                <div class="input-group mb-3 col">
+                    <label class="input-group-text" for="inputGroupSelect01">Permissão:</label>            
+                    <select name="permission" class="form-select" id="inputGroupSelect01">        
+                            <option selected></option>
+                            <option value="1">Admin</option>
+                            <option value="2">Docente</option>
+                            <option value="3">Aluno</option>
+                    </select>
+                </div>
             </div>
-            <div class="input-group mb-3">
-            <label class="input-group-text" for="inputGroupSelect01">Permissão:</label>            
-            <select name="permission" class="form-select" id="inputGroupSelect01">        
-                    <option selected></option>
-                    <option value="1">Admin</option>
-                    <option value="2">Docente</option>
-                    <option value="3">Aluno</option>
-            </select>
-            </div>
-            <button type="submit" class="btn btn-primary">enviar</button>
+            <div class="container-btn">
+              <button type="submit" class="btn btn-primary btn-enviar-usuario">Inserir usuário</button>
+            </div>      
         </form>
     </div>
 </div>

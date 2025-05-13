@@ -10,11 +10,12 @@
     <x-sidebar/>
     <div class="home-right">
         <div class="userlist-section-content-header"> 
-            <img class="user-three-img" src="{{asset('img/users-three.svg')}}" alt="">
-            <h1>Editar {{$user->name}}</h1>
             <button class="btn-add-arrow-left" onclick="window.location='{{route('home')}}'">
                 <img id='arrow-left-img' class="plus-img" src="{{asset('img/arrow-left.svg')}}" alt="">
             </button>
+            <h2>Editar {{$user->name}}</h2>
+            <img class="user-three-img" src="{{asset('img/users-three.svg')}}" alt="">
+
         </div>
         <form class="form-cadastro" id="form-cadastro" method='post' action="{{route ('users.update', $user->id)}}">
         @csrf
@@ -36,16 +37,18 @@
                     <span class="input-group-text" id="inputGroup-sizing-default">confirmar senha:</span>
                     <input name="confirm_password" type="password" class="form-control">               
                 </div>
+                <div class="input-group mb-3 col">
+                    <label class="input-group-text" for="inputGroupSelect01">Permissão:</label>            
+                    <select name="permission" class="form-select" id="inputGroupSelect01">
+                        <option value="1" {{ $user->permission_level == 1 ? 'selected' : '' }}>Admin</option>
+                        <option value="2" {{ $user->permission_level == 2 ? 'selected' : '' }}>Docente</option>
+                        <option value="3" {{ $user->permission_level == 3 ? 'selected' : '' }}>Aluno</option>
+                    </select>
+                </div>
             </div>
-            <div class="input-group mb-3">
-            <label class="input-group-text" for="inputGroupSelect01">Permissão:</label>            
-            <select name="permission" class="form-select" id="inputGroupSelect01">
-                <option value="1" {{ $user->permission_level == 1 ? 'selected' : '' }}>Admin</option>
-                <option value="2" {{ $user->permission_level == 2 ? 'selected' : '' }}>Docente</option>
-                <option value="3" {{ $user->permission_level == 3 ? 'selected' : '' }}>Aluno</option>
-            </select>
+            <div class="container-btn">
+              <button type="submit" class="btn btn-primary btn-enviar-usuario">Editar usuário</button>
             </div>
-            <button type="submit" class="btn btn-primary">enviar</button>
         </form>
     </div>
 </div>

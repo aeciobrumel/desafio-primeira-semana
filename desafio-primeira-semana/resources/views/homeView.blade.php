@@ -15,12 +15,11 @@
             <button class="btn-add-user" onclick="goTocreateUserForm()">
                 <img id='add-user' class="plus-img" src="{{asset('img/plus.svg')}}" alt="">
             </button>
-         </div>
-      <div class="userlist-users">
-
-    @php
-        $logged =  Auth::user();
-    @endphp
+        </div>
+        <div class="userlist-users">
+            @php
+                $logged =  Auth::user();
+            @endphp
             @foreach($users as $user)
                 @if($user->id !== $logged->id)
                     <x-card-user 
@@ -31,7 +30,7 @@
                     />
                 @endif
             @endforeach
-         </div>
+        </div>
     </div>
 </div>
 

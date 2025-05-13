@@ -72,8 +72,6 @@ class UserController extends Controller
 
         return redirect()->route('home')->with('sucess', 'Usuário deletado com sucesso!');
     }
-
-                                  
         //rota para criar usuario
     public function showCreateForm(){
             return view('users.create');
