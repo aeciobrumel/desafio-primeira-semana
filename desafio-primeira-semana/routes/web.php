@@ -22,11 +22,18 @@ Route::middleware(['auth'])->group(function(){
 
           // ...
       
-      });
-        Route::get('/users/create', [UserController::class,'showCreateForm']) -> name ('users.create');
-        Route::get('/users/{id}/edit',[UserController::class,'editUser']) -> name ('users.edit');
-        Route::put('/users/{id}',[UserController::class,'updateUser']) ->name('users.update');
-        Route::delete('/users/{id}',[UserController::class,'destroy'])->name('users.destroy');
+        });
+        Route::middleware(['group-name'])->group(function () {
+
+          // ...
+      
+        });
+
+
+        Route::get('/users/create', [UserController::class,'showCreateForm']) -> name ('users.create')->middleware('moderador');
+        Route::get('/users/{id}/edit',[UserController::class,'editUser']) -> name ('users.edit')->middleware('moderador');
+        Route::put('/users/{id}',[UserController::class,'updateUser']) ->name('users.update')->middleware('moderador');
+        Route::delete('/users/{id}',[UserController::class,'destroy'])->name('users.destroy')->middleware('admin');
 
 
           //criando usuarios

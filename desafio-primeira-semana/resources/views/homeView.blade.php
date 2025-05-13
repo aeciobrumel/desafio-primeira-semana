@@ -22,13 +22,12 @@
         $logged =  Auth::user();
     @endphp
             @foreach($users as $user)
-
-
                 @if($user->id !== $logged->id)
                     <x-card-user 
                         :userName="$user->name" 
                         :userEmail="$user->email" 
                         :userId="$user->id"
+                        :canDo="$logged->permission_level"
                     />
                 @endif
             @endforeach

@@ -18,7 +18,7 @@ class HasModeradorPermission
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(!in_array(Auth::user()->permission_level,[1,2])){
+        if(in_array(Auth::user()->permission_level,[1,2])){
             return $next($request);
         }
         return redirect('/');

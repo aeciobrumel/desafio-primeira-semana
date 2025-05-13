@@ -11,11 +11,13 @@ class CardUser extends Component
     public string $userName;
     public string $userEmail;
     public int $userId;
-    public function __construct( string $userName, string $userEmail,int $userId)
+    public int $canDo;
+    public function __construct( string $userName, string $userEmail,int $userId, int $canDo)
       {
           $this->userName = $userName;
           $this->userEmail = $userEmail;
           $this->userId = $userId;
+          $this->canDo = $canDo;
       }
   
     /**

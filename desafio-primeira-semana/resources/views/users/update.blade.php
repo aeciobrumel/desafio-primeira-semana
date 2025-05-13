@@ -11,7 +11,7 @@
     <div class="home-right">
         <div class="userlist-section-content-header"> 
             <img class="user-three-img" src="{{asset('img/users-three.svg')}}" alt="">
-            <h1>editar {{$user->name}}</h1>
+            <h1>Editar {{$user->name}}</h1>
             <button class="btn-add-arrow-left" onclick="window.location='{{route('home')}}'">
                 <img id='arrow-left-img' class="plus-img" src="{{asset('img/arrow-left.svg')}}" alt="">
             </button>
