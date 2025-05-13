@@ -20,6 +20,9 @@
 </head>
 <body>
     <main>
+    @if(session('error'))
+     <div class="alert alert-danger">{{ session('error') }}</div>
+    @endif
     @yield('content')
     <x-modal id="login-error-modal" message="Erro no login" />
         <x-modal id="login-success-modal" message="Bem vindo a nossa plataforma!" />

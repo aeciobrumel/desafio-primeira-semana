@@ -2,8 +2,9 @@
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-
-
+use Illuminate\Auth\Middleware\Authorize;
+use App\Http\Middleware\HasAdminPermission;
+use App\Http\Middleware\HasModeradorPermission;
 
 //ROTA de login
 Route::get('/',[LoginController::class, 'login'])->name ('login');
@@ -17,6 +18,11 @@ Route::middleware(['auth'])->group(function(){
 
 
         //crud
+        Route::middleware(['group-name'])->group(function () {
+
+          // ...
+      
+      });
         Route::get('/users/create', [UserController::class,'showCreateForm']) -> name ('users.create');
         Route::get('/users/{id}/edit',[UserController::class,'editUser']) -> name ('users.edit');
         Route::put('/users/{id}',[UserController::class,'updateUser']) ->name('users.update');
