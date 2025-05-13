@@ -10,11 +10,9 @@
             </div>
         </div>
         <div class="card-user-right">
-
         @if(in_array($canDo,[1, 2]))
             <a class="btn-edit-user"  href="{{route('users.edit', $userId)}}"><img src="{{ asset('img/note-pencil.svg') }}" alt="Editar"></a>
         @endif
-
         @if($canDo === 1)
             <form action="{{route ('users.destroy',$userId)}}" method="post">
                 @csrf
@@ -22,7 +20,6 @@
                 <button class="btn-delete-user"><img src="{{ asset('img/trash.svg') }}" alt="Excluir"></button>
             </form>
         @endif
-           </div>
-
+        </div>
     </div>
 </div>
