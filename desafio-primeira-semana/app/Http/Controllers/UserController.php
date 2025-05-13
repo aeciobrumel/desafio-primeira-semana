@@ -13,8 +13,8 @@ class UserController extends Controller
 {
     //listar usuarios na home
     public function userList(){
-    $users = DB::select('select * from users'); //seleciono todos os users do banco
-    return view('homeView', ['users'=> $users]);//passo todos os usuários pra home
+        $users = DB::select('select * from users'); //seleciono todos os users do banco
+        return view('homeView', ['users'=> $users]);//passo todos os usuários pra home
     }
 //criar um novo usuário
     public function storeUser(Request $request){
@@ -69,11 +69,10 @@ class UserController extends Controller
     public function destroy($id){
        // $user = User::findOrFail($id);
         User::destroy($id);
-
         return redirect()->route('home')->with('sucess', 'Usuário deletado com sucesso!');
     }
         //rota para criar usuario
     public function showCreateForm(){
-            return view('users.create');
+        return view('users.create');
     }
 }
