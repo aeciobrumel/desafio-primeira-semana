@@ -5,19 +5,20 @@ namespace App\View\Components;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
+use App\Enums\PermissionLevel;
 
 class CardUser extends Component
 {
     public string $userName;
     public string $userEmail;
     public int $userId;
-    public int $canDo;
-    public function __construct( string $userName, string $userEmail,int $userId, int $canDo)
+    public PermissionLevel $permission;
+    public function __construct( string $userName, string $userEmail,int $userId, PermissionLevel $permission)
       {
           $this->userName = $userName;
           $this->userEmail = $userEmail;
           $this->userId = $userId;
-          $this->canDo = $canDo;
+          $this->permission = $permission;
       }
   
     /**

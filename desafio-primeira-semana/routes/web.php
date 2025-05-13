@@ -3,8 +3,8 @@ use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use Illuminate\Auth\Middleware\Authorize;
-use App\Http\Middleware\HasAdminPermission;
-use App\Http\Middleware\HasModeradorPermission;
+use App\Http\Middleware\HasPermission;
+
 //ROTA de login
 Route::get('/',[LoginController::class, 'login'])->name ('login');
 Route::post('/login', [LoginController::class, 'authenticate']) -> name ('authenticate');
@@ -14,10 +14,10 @@ Route::middleware(['auth'])->group(function(){
         Route::get('/home', [UserController::class, 'userList'])->name ('home');
         //rota para ir para cadastrar usuário
         //crud
-        Route::get('/users/create', [UserController::class,'showCreateForm']) -> name ('users.create')->middleware('moderador');
-        Route::get('/users/{id}/edit',[UserController::class,'editUser']) -> name ('users.edit')->middleware('moderador');
-        Route::put('/users/{id}',[UserController::class,'updateUser']) ->name('users.update')->middleware('moderador');
-        Route::delete('/users/{id}',[UserController::class,'destroy'])->name('users.destroy')->middleware('admin');
+        Route::get('/users/create', [UserController::class,'showCreateForm']) -> name ('users.create')->middleware('permission:1,2');
+        Route::get('/users/{id}/edit',[UserController::class,'editUser']) -> name ('users.edit')->middleware('permission:1,2');
+        Route::put('/users/{id}',[UserController::class,'updateUser']) ->name('users.update')->middleware('permission:1,2');
+        Route::delete('/users/{id}',[UserController::class,'destroy'])->name('users.destroy')->middleware('permission:1');
           //criando usuarios
         Route::post('/users', [UserController::class, 'storeUser'])->name ('users.store');
         //rota de logout do usuário

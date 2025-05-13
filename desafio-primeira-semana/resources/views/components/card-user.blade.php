@@ -1,3 +1,6 @@
+@php
+    use App\Enums\PermissionLevel;
+@endphp
 <div class="card card-user">
     <div class="card-user-content">
         <div class="card-user-left">
@@ -10,10 +13,10 @@
             </div>
         </div>
         <div class="card-user-right">
-        @if(in_array($canDo,[1, 2]))
+        @if(in_array($permission,[PermissionLevel::Admin , PermissionLevel::Docente]))
             <a class="btn-edit-user"  href="{{route('users.edit', $userId)}}"><img src="{{ asset('img/note-pencil.svg') }}" alt="Editar"></a>
         @endif
-        @if($canDo === 1)
+        @if($permission === PermissionLevel::Admin)
             <form action="{{route ('users.destroy',$userId)}}" method="post">
                 @csrf
                 @method('DELETE')

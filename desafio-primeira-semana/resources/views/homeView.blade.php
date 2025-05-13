@@ -26,7 +26,7 @@
                         :userName="$user->name" 
                         :userEmail="$user->email" 
                         :userId="$user->id"
-                        :canDo="$logged->permission_level"
+                        :permission="$logged->permission_level"
                     />
                 @endif
             @endforeach
