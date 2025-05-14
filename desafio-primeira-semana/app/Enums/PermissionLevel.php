@@ -4,8 +4,8 @@ namespace App\Enums;
 
 enum PermissionLevel:int
 {
-    case Admin = 1;
-    case Docente = 2;
-    case Aluno = 3;
+    case ADMIN = 1;
+    case DOCENTE = 2;
+    case ALUNO = 3;
 
 }
