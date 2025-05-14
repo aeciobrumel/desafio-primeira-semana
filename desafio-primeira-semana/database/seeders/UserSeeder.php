@@ -48,17 +48,20 @@ class UserSeeder extends Seeder
                     'email' => 'teste2@exemplo.com',
                     'password' => Hash::make('123456'),
                     'permission_level' => PermissionLevel::ADMIN,
-                ], [
+                ],
+                [
                     'name' => 'teste3',
                     'email' => 'teste3@exemplo.com',
                     'password' => Hash::make('123456'),
                     'permission_level' => PermissionLevel::ADMIN,
-                ], [
+                ],
+                [
                     'name' => 'teste4',
                     'email' => 'teste4@exemplo.com',
                     'password' => Hash::make('123456'),
                     'permission_level' => PermissionLevel::ADMIN,
-                ], [
+                ],
+                [
                     'name' => 'teste5',
                     'email' => 'teste5@exemplo.com',
                     'password' => Hash::make('123456'),

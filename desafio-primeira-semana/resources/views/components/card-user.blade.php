@@ -13,10 +13,10 @@
             </div>
         </div>
         <div class="card-user-right">
-        @if(in_array($permission,[PermissionLevel::Admin , PermissionLevel::Docente]))
+        @if(in_array($permission,[PermissionLevel::ADMIN , PermissionLevel::DOCENTE]))
             <a class="btn-edit-user"  href="{{route('users.edit', $userId)}}"><img src="{{ asset('img/note-pencil.svg') }}" alt="Editar"></a>
         @endif
-        @if($permission === PermissionLevel::Admin)
+        @if($permission === PermissionLevel::ADMIN)
             <form action="{{route ('users.destroy',$userId)}}" method="post">
                 @csrf
                 @method('DELETE')

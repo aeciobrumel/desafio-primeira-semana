@@ -38,10 +38,12 @@
                 <div class="input-group mb-3 col">
                     <label class="input-group-text" for="inputGroupSelect01">Permissão:</label>            
                     <select name="permission" class="form-select" id="inputGroupSelect01">        
-                            <option selected></option>
-                            <option value="1">Admin</option>
-                            <option value="2">Docente</option>
-                            <option value="3">Aluno</option>
+                                <option selected></option>
+                            @foreach($permissions as $permission)
+                                <option value="{{$permission->value}}">
+                                    {{$permission->name}}
+                                </option>
+                            @endforeach
                     </select>
                 </div>
             </div>
