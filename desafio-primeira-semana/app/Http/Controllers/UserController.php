@@ -18,8 +18,9 @@ class UserController extends Controller
     public function userList(){
         $logged = Auth::user();
         $users = User::where('id', '!=', $logged->id)->get();         
+        $permissions = PermissionLevel::cases();
         //seleciono todos os users do banco
-        return view('homeView',compact('users', 'logged'));//passo todos os usuários pra home (menos o logado)
+        return view('homeView',compact('users', 'logged','permissions'));//passo todos os usuários pra home (menos o logado)
     }
 //criar um novo usuário
     public function storeUser(UserUpdateStoreRequest $request){
