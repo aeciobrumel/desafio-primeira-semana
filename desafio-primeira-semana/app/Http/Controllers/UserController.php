@@ -8,8 +8,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
-use App\Http\Requests\UserStoreRequest;
-use App\Http\Requests\UserUpdateRequest;
+use App\Http\Requests\UserUpdateStoreRequest;
 use App\Enums\PermissionLevel;
 
 
@@ -21,11 +20,9 @@ class UserController extends Controller
         return view('homeView', ['users'=> $users]);//passo todos os usuários pra home
     }
 //criar um novo usuário
-    public function storeUser(UserUpdateRequest $request){
+    public function storeUser(UserUpdateStoreRequest $request){
         //validando os campos
         $input = $request->validated();
-        
-
         $newUser = new User();
         $newUser->name = $input['name'];
         $newUser->email = $input['email'];
@@ -39,9 +36,8 @@ class UserController extends Controller
         $permissions = PermissionLevel::cases();
         return view('users.update', compact('user','permissions'));
     }
-    public function updateUser(UserUpdateRequest $request, $id){
+    public function updateUser(UserUpdateStoreRequest $request, $id){
          $input = $request->validated();
-
         $user = User::findOrFail($id);//busca o usuario
         $user->name = $input['name'];
         $user->email = $input['email'];
