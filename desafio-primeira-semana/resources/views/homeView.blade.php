@@ -17,18 +17,13 @@
             </button>
         </div>
         <div class="userlist-users">
-            @php
-                $logged =  Auth::user();
-            @endphp
             @foreach($users as $user)
-                @if($user->id !== $logged->id)
                     <x-card-user 
                         :userName="$user->name" 
                         :userEmail="$user->email" 
                         :userId="$user->id"
                         :permission="$logged->permission_level"
                     />
-                @endif
             @endforeach
         </div>
     </div>

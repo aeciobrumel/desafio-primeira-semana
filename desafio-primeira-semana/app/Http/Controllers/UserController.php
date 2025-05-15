@@ -16,8 +16,10 @@ class UserController extends Controller
 {
     //listar usuarios na home
     public function userList(){
-        $users = User::all(); //seleciono todos os users do banco
-        return view('homeView', ['users'=> $users]);//passo todos os usuários pra home
+        $logged = Auth::user();
+        $users = User::where('id', '!=', $logged->id)->get();         
+        //seleciono todos os users do banco
+        return view('homeView',compact('users', 'logged'));//passo todos os usuários pra home (menos o logado)
     }
 //criar um novo usuário
     public function storeUser(UserUpdateStoreRequest $request){
