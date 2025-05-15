@@ -16,41 +16,7 @@
             <h2>Novo usuário</h2>
             <img class="user-three-img" src="{{asset('img/users-three.svg')}}" alt="">
         </div>
-        <form class="form-cadastro" id="form-cadastro" method='post' action="{{route ('users.store')}}">
-            @csrf
-            <div class="input-group mb-3">
-                <span class="input-group-text" id="inputGroup-sizing-default">Nome:</span>
-                <input name="name" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-            </div>
-            <div class="input-group mb-3">
-                <span class="input-group-text" id="inputGroup-sizing-default">Email:</span>
-                <input name="email" type="email" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-            </div>
-            <div class="row">
-                <div class="input-group mb-3 col">
-                    <span class="input-group-text" id="inputGroup-sizing-default">Senha:</span>
-                    <input name="password" type="password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                </div>
-                <div class="input-group mb-3 col">
-                    <span class="input-group-text" id="inputGroup-sizing-default">confirmar senha:</span>
-                    <input name="confirm_password" type="password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                </div>
-                <div class="input-group mb-3 col">
-                    <label class="input-group-text" for="inputGroupSelect01">Permissão:</label>            
-                    <select name="permission" class="form-select" id="inputGroupSelect01">        
-                                <option selected></option>
-                            @foreach($permissions as $permission)
-                                <option value="{{$permission->value}}">
-                                    {{$permission->name}}
-                                </option>
-                            @endforeach
-                    </select>
-                </div>
-            </div>
-            <div class="container-btn">
-              <button type="submit" class="btn btn-primary btn-enviar-usuario">Inserir usuário</button>
-            </div>      
-        </form>
+        @include('users.partials.form')
     </div>
 </div>
 

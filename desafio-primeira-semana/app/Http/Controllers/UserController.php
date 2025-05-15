@@ -35,16 +35,9 @@ class UserController extends Controller
     }
     public function editUser ($id){
         $user = User::findOrFail($id);
-        return view('users.update', compact('user'));
+        $permissions = PermissionLevel::cases();
+        return view('users.update', compact('user','permissions'));
     }
-
-
-
-
-
-
-
-
     public function updateUser(UserUpdateRequest $request, $id){
          $input = $request->validated();
 
@@ -60,9 +53,6 @@ class UserController extends Controller
         // Redireciona com mensagem
         return redirect()->route('home')->with('success', 'Usuário atualizado com sucesso!');
     }
-
-
-
     //deleta usuario
     public function destroy($id){
        // $user = User::findOrFail($id);
