@@ -21,9 +21,10 @@ class UserController extends Controller
         return view('homeView', ['users'=> $users]);//passo todos os usuários pra home
     }
 //criar um novo usuário
-    public function storeUser(UserStoreRequest $request){
+    public function storeUser(UserUpdateRequest $request){
         //validando os campos
         $input = $request->validated();
+        
 
         $newUser = new User();
         $newUser->name = $input['name'];
@@ -48,6 +49,7 @@ class UserController extends Controller
         if (!empty($input['password'])) {
               $user->password= Hash::make($input['password']);
         }
+        
         // Salva no banco
         $user->save();
         // Redireciona com mensagem

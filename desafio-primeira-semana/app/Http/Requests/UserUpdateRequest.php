@@ -21,20 +21,27 @@ class UserUpdateRequest extends FormRequest
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
     public function rules(): array
-    {         
+    {   
         $userId = $this->route('id');
-        
         $data = [
             'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email,' . $userId,
-            'permission' => ['required',new Enum(PermissionLevel::class)],  
-        ];
-        if($this->filled('password')) {
+            'permission' => ['required',new Enum(PermissionLevel::class)],
+            'email' => 'required|email|unique:users,email' .($userId ? ',' . $userId : ''),
+        ];                                               //se email tiver user id anula ele
 
-            $data['password'] ='min:6|same:confirm_password';
+
+        if ($this->isMethod('post')) {
+            $data['password'] = 'required|min:6|same:confirm_password';
             $data['confirm_password'] = 'required';
-    
         }
+
+        if ($this->isMethod('put')) {
+            if ($this->filled('password')) {
+                $data['password'] = 'min:6|same:confirm_password';
+                $data['confirm_password'] = 'required';
+            }
+        }
+
         return $data;
     }
 }
