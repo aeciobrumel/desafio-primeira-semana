@@ -21,8 +21,13 @@ class UserController extends Controller
         $permissions = PermissionLevel::cases();
         //seleciono todos os users do banco
         return view('homeView',compact('users', 'logged','permissions'));//passo todos os usuários pra home (menos o logado)
+    }        
+    //rota para criar usuario
+    public function showCreateForm(){
+       $permissions = PermissionLevel::cases();
+        return view('users.create',compact('permissions'));
     }
-//criar um novo usuário
+    //criar um novo usuário
     public function storeUser(UserUpdateStoreRequest $request){
         //validando os campos
         $input = $request->validated();
@@ -34,11 +39,13 @@ class UserController extends Controller
         $newUser->save();
         return redirect()->route('home')->with('success', 'Usuário cadastrado com sucesso!');
     }
+    //editar
     public function editUser ($id){
         $user = User::findOrFail($id);
         $permissions = PermissionLevel::cases();
         return view('users.update', compact('user','permissions'));
     }
+    //atualizar
     public function updateUser(UserUpdateStoreRequest $request, $id){
          $input = $request->validated();
         $user = User::findOrFail($id);//busca o usuario
@@ -48,21 +55,14 @@ class UserController extends Controller
         if (!empty($input['password'])) {
               $user->password= Hash::make($input['password']);
         }
-        
-        // Salva no banco
         $user->save();
         // Redireciona com mensagem
         return redirect()->route('home')->with('success', 'Usuário atualizado com sucesso!');
     }
     //deleta usuario
     public function destroy($id){
-       // $user = User::findOrFail($id);
         User::destroy($id);
         return redirect()->route('home')->with('success', 'Usuário deletado com sucesso!');
     }
-        //rota para criar usuario
-    public function showCreateForm(){
-       $permissions = PermissionLevel::cases();
-        return view('users.create',compact('permissions'));
-    }
+    
 }

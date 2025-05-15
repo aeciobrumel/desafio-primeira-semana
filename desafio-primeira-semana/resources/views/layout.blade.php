@@ -16,7 +16,6 @@
       type="text/css"
       href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css"
     />
-
 </head>
 <body>
     <main>
@@ -59,7 +58,6 @@
           });
       });
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-      
 //script logout sidebar
       function logoutPost() {
               const formLogout = document.createElement('form');
@@ -75,7 +73,7 @@
               document.body.appendChild(formLogout);
               formLogout.submit();
           }
-
+// botão de rota pro form
       function goTocreateUserForm(){
         const formRouteCreateUser = document.createElement('form');
               formRouteCreateUser.method = 'get';

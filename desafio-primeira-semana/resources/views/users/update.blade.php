@@ -1,9 +1,6 @@
 
 @extends('layout')
-
-
 @section('content')
-
 <section class="background-login container-fluid">
     <div class="container-home">
         <x-sidebar/>
@@ -11,8 +8,6 @@
         <x-header-store-user :title="'Editar ' . $user->name" />
             @include('users.partials.form')
         </div>
-        
-      
     </div>
 </section>
 @endsection

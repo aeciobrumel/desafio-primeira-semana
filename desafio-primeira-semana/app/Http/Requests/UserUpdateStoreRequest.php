@@ -14,7 +14,6 @@ class UserUpdateStoreRequest extends FormRequest
     {
         return true;
     }
-
     /**
      * Get the validation rules that apply to the request.
      *
@@ -27,21 +26,17 @@ class UserUpdateStoreRequest extends FormRequest
             'name' => 'required|string|max:255',
             'permission' => ['required',new Enum(PermissionLevel::class)],
             'email' => 'required|email|unique:users,email' .($userId ? ',' . $userId : ''),
-        ];                                               //se email tiver user id anula ele
-
-
+        ];  //se email tiver user id anula ele
         if ($this->isMethod('post')) {
             $data['password'] = 'required|min:6|same:confirm_password';
             $data['confirm_password'] = 'required';
         }
-
         if ($this->isMethod('put')) {
             if ($this->filled('password')) {
                 $data['password'] = 'min:6|same:confirm_password';
                 $data['confirm_password'] = 'required';
             }
         }
-
         return $data;
     }
 }

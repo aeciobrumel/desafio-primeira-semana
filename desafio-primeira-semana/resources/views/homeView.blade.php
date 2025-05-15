@@ -20,7 +20,6 @@
                     <img id='add-user' class="plus-img" src="{{asset('img/plus.svg')}}" alt="">
                 </button>
             @endif
-
         </div>
         <div class="userlist-users">
             @foreach($users as $user)

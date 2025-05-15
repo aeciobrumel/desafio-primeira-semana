@@ -20,7 +20,6 @@ class User extends Authenticatable
      */
     /*
     permissions constrants
-    
     */
     protected $fillable = [
         'name',
@@ -28,7 +27,6 @@ class User extends Authenticatable
         'password',
         'permission_level',
     ];
-
     /**
      * The attributes that should be hidden for serialization.
      *

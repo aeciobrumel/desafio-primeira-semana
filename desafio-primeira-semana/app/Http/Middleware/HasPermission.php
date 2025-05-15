@@ -19,11 +19,9 @@ class HasPermission
 
     {
         $user = Auth::user();
-
         if(!in_array($user-> permission_level->value, array_map('intval', $requiredLevels))){
             return redirect()->route('home')->with('error', 'Acesso negado.');
         }
-
         return $next($request);
     }
 }
