@@ -24,7 +24,7 @@
      <div class="alert alert-danger">{{ session('error') }}</div>
     @endif
     @yield('content')
-    <x-modal id="login-error-modal" message="Erro no login" />
+        <x-modal id="login-error-modal" message="Erro no login" />
         <x-modal id="login-success-modal" message="Bem vindo a nossa plataforma!" />
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
