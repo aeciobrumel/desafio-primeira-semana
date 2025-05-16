@@ -15,7 +15,7 @@
     <div class="row">
         <div class="input-group mb-3 col">
             <span class="input-group-text" id="inputGroup-sizing-default">Senha:</span>
-            <input name="password" type="password" class="form-control">                
+            <input name="password" type="password" class="form-control">              
         </div>
         <div class="input-group mb-3 col">
             <span class="input-group-text" id="inputGroup-sizing-default">confirmar senha:</span>

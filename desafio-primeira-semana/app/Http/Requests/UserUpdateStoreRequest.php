@@ -39,4 +39,30 @@ class UserUpdateStoreRequest extends FormRequest
         }
         return $data;
     }
+    public function messages(): array
+    {
+        return [
+            'name.required' => 'O campo nome é obrigatório.',
+            'email.required' => 'O campo e-mail é obrigatório.',
+            'email.email' => 'Informe um e-mail válido.',
+            'email.unique' => 'Este e-mail já está em uso.',
+            'permission.required' => 'Selecione o campo de Permissão do Usuário.',
+            'permission.in' => 'Permissão inválida.',
+            'password.required' => 'A senha é obrigatória.',
+            'password.min' => 'A senha deve ter no mínimo 6 caracteres.',
+            'password.same' => 'A confirmação de senha não confere.',
+            'confirm_password.required' => 'Você deve confirmar a senha.',
+        ];
+    }
+
+    public function attributes(): array
+    {
+        return [
+            'name' => 'nome',
+            'email' => 'e-mail',
+            'permission' => 'permissão',
+            'password' => 'senha',
+            'confirm_password' => 'confirmação de senha',
+        ];
+    }
 }

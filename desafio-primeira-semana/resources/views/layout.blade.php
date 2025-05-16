@@ -18,13 +18,18 @@
     />
 </head>
 <body>
+@if ($errors->any())
+    <div class="alert alert-danger alert-dismissible fade show" role="alert" id="floating-alert">
+        <ul class="mb-0">
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fechar"></button>
+    </div>
+@endif
+
     <main>
-    @if(session('error'))
-     <span class="alert alert-danger">{{ session('error') }}</span>
-
-     <x-modal id="login-error-modal" message="{{ session('error') }}" />
-
-    @endif
     @yield('content')
         <x-modal id="login-error-modal" message="Erro no login" />
         <x-modal id="login-success-modal" message="Bem vindo a nossa plataforma!" />
@@ -43,6 +48,15 @@
                 sucessModal.show();
             @endif
         }
+//tira a mensagem de erro global
+    setTimeout(() => {
+    const alert = document.getElementById('floating-alert');
+        if (alert) {
+            alert.classList.remove('show'); // fade do Bootstrap
+            setTimeout(() => alert.remove(), 500); // remove após fade
+        }
+      }, 3000); // 5 segundos
+
     //Script para tela de login
           //escutador de evento para o submit do formulário
           // adiciona um escutador de evento para o evento 'DOMContentLoaded'
