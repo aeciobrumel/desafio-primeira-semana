@@ -12,7 +12,7 @@ enum PermissionLevel:int
     public static function fromName(string $name){
         return match ($name) {
             'ADMIN' => self::ADMIN,
-            'MODERADOR'=> self::DOCENTE ,
+            'DOCENTE'=> self::DOCENTE ,
             'ALUNO'=> self::Aluno,
             default => null,
         };

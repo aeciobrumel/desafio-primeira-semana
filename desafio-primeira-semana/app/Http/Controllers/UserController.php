@@ -24,8 +24,9 @@ class UserController extends Controller
     }        
     //rota para criar usuario
     public function showCreateForm(){
-       $permissions = PermissionLevel::cases();
-        return view('users.create',compact('permissions'));
+        $logged = Auth::user();
+        $permissions = PermissionLevel::cases();
+        return view('users.create',compact('permissions', 'logged'));
     }
     //criar um novo usuário
     public function storeUser(UserUpdateStoreRequest $request){
