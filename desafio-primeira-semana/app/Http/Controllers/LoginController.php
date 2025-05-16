@@ -26,7 +26,6 @@ class LoginController extends Controller
         return back()->with('login-error',true)->withErrors([
             'email' => 'credenciais inválidas.',
         ])->onlyInput('email');
-
     }
     //logout
     public function logout(Request $request): RedirectResponse

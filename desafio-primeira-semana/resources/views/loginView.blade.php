@@ -23,8 +23,6 @@
             </form>
         </div>
     </div>
-
-    
     <div id="loading-overlay" style="
         display: none;
         position: fixed;
@@ -36,13 +34,10 @@
         backdrop-filter: blur(2px);
         align-items: center;
         justify-content: center;
-    
     ">
         <div class="spinner-border text-light" role="status" style="width: 3rem; height: 3rem;">
             <span class="visually-hidden">Carregando...</span>
         </div>
     </div>
-
 </section>
-
 @endsection

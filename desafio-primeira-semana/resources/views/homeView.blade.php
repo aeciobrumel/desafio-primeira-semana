@@ -6,9 +6,7 @@
 @php
     use App\Enums\PermissionLevel;
 @endphp
-
 <section class="background-login container-fluid">
-
 <div class="container-home">
     <x-sidebar/>
     <div class="home-right">
@@ -33,7 +31,6 @@
         </div>
     </div>
 </div>
-
 </section>
 @endsection
 
