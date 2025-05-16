@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use Illuminate\Auth\Middleware\Authorize;
 use App\Http\Middleware\HasPermission;
+use App\Enums\PermissionLevel;
 
 //ROTA de login
 Route::get('/',[LoginController::class, 'login'])->name ('login');
@@ -12,16 +13,12 @@ Route::post('/login', [LoginController::class, 'authenticate']) -> name ('authen
 Route::middleware(['auth'])->group(function(){
         //passando lista de usuários para home
         Route::get('/home', [UserController::class, 'userList'])->name ('home');
-        //rota para ir para cadastrar usuário
-        //crud
-        Route::get('/users/create', [UserController::class,'showCreateForm']) -> name ('users.create')->middleware('permission:1,2');
-        Route::get('/users/{id}/edit',[UserController::class,'editUser']) -> name ('users.edit')->middleware('permission:1,2');
-        Route::put('/users/{id}',[UserController::class,'updateUser']) ->name('users.update')->middleware('permission:1,2');
-        Route::delete('/users/{id}',[UserController::class,'destroy'])->name('users.destroy')->middleware('permission:1');
-          //criando usuarios
-        Route::post('/users', [UserController::class, 'storeUser'])->name ('users.store');
-        //rota de logout do usuário
-        Route::post('/logout', [LoginController::class,'logout']) -> name ('logout');
+        Route::get('/users/create', [UserController::class,'showCreateForm'])->name('users.create')->middleware('permission:ADMIN,DOCENTE');
+        Route::get('/users/{id}/edit',[UserController::class,'editUser'])->name('users.edit')->middleware('permission:ADMIN,DOCENTE');
+        Route::put('/users/{id}',[UserController::class,'updateUser']) ->name('users.update')->middleware('permission:ADMIN,DOCENTE');
+        Route::delete('/users/{id}',[UserController::class,'destroy'])->name('users.destroy')->middleware('permission:ADMIN');
+        Route::post('/users',[UserController::class, 'storeUser'])->name('users.store');
+        Route::post('/logout',[LoginController::class,'logout']) -> name('logout');
 });
 
 

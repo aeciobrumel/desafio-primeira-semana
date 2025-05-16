@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Enums\PermissionLevel;
 
 class HasPermission
 {
@@ -16,10 +17,11 @@ class HasPermission
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
     public function handle(Request $request, Closure $next, ...$requiredLevels): Response
-
     {
         $user = Auth::user();
-        if(!in_array($user-> permission_level->value, array_map('intval', $requiredLevels))){
+        $requiredEnums = array_map(fn($permission)=>PermissionLevel::fromName($permission), $requiredLevels );
+        //função anonima transforma cada item de requiredLevels em um enum com a função FromName e salva em um array;
+        if(!in_array($user->permission_level,  $requiredEnums)){//verifica se a permissao do usuario esta no array de permissoes passado;
             return redirect()->route('home')->with('error', 'Acesso negado.');
         }
         return $next($request);

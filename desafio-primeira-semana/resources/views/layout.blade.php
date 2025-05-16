@@ -20,7 +20,10 @@
 <body>
     <main>
     @if(session('error'))
-     <div class="alert alert-danger">{{ session('error') }}</div>
+     <span class="alert alert-danger">{{ session('error') }}</span>
+
+     <x-modal id="login-error-modal" message="{{ session('error') }}" />
+
     @endif
     @yield('content')
         <x-modal id="login-error-modal" message="Erro no login" />
@@ -40,7 +43,6 @@
                 sucessModal.show();
             @endif
         }
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //Script para tela de login
           //escutador de evento para o submit do formulário
           // adiciona um escutador de evento para o evento 'DOMContentLoaded'
@@ -48,47 +50,45 @@
           const form = document.getElementById('login-form');
           // Adiciona um escutador de evento para captar o evento 'submit' do formulário
           form.addEventListener('submit', function (event) {
-          // impede envio imediato do formulário
-              event.preventDefault(); 
-          // Mostra o overlay com spinner e aguarda meio segundo antes de enviar o formulário
-              document.getElementById('loading-overlay').style.display = 'flex';
-                      setTimeout(() => {
-                          form.submit();
-                      }, 500); // 500 milissegundos = 0,5 segundos
+            // impede envio imediato do formulário
+            event.preventDefault(); 
+            // Mostra o overlay com spinner e aguarda meio segundo antes de enviar o formulário
+            document.getElementById('loading-overlay').style.display = 'flex';
+            setTimeout(() => {
+                form.submit();
+            }, 500); // 500 milissegundos = 0,5 segundos
           });
       });
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //script logout sidebar
       function logoutPost() {
-              const formLogout = document.createElement('form');
-              formLogout.method = 'POST';
-              formLogout.action ='{{route('logout')}}';
+            const formLogout = document.createElement('form');
+            formLogout.method = 'POST';
+            formLogout.action ='{{route('logout')}}';
 
-              const csrf = document.createElement('input');
-              csrf.type = 'hidden';
-              csrf.name= '_token';
-              csrf.value = '{{csrf_token()}}';
+            const csrf = document.createElement('input');
+            csrf.type = 'hidden';
+            csrf.name= '_token';
+            csrf.value = '{{csrf_token()}}';
 
-              formLogout .appendChild(csrf);
-              document.body.appendChild(formLogout);
-              formLogout.submit();
+            formLogout .appendChild(csrf);
+            document.body.appendChild(formLogout);
+            formLogout.submit();
           }
 // botão de rota pro form
       function goTocreateUserForm(){
         const formRouteCreateUser = document.createElement('form');
-              formRouteCreateUser.method = 'get';
-              formRouteCreateUser.action ='{{route('users.create')}}';
+        formRouteCreateUser.method = 'get';
+        formRouteCreateUser.action ='{{route('users.create')}}';
 
-              const csrf = document.createElement('input');
-              csrf.type = 'hidden';
-              csrf.name= '_token';
-              csrf.value = '{{csrf_token()}}';
+        const csrf = document.createElement('input');
+        csrf.type = 'hidden';
+        csrf.name= '_token';
+        csrf.value = '{{csrf_token()}}';
 
-              formRouteCreateUser .appendChild(csrf);
-              document.body.appendChild(formRouteCreateUser);
-              formRouteCreateUser.submit();
+        formRouteCreateUser .appendChild(csrf);
+        document.body.appendChild(formRouteCreateUser);
+        formRouteCreateUser.submit();
       }    
-      
   </script>
 </body>
 </html>
