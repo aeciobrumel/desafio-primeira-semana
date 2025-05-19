@@ -24,7 +24,9 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'cpf',
         'password',
+        'photo',
         'permission_level',
     ];
     /**
@@ -50,4 +52,13 @@ class User extends Authenticatable
             'permission_level' => PermissionLevel::class,
         ];
     }
+    public function getCpfFormattedAttribute(): string
+    {
+        return preg_replace('/(\d{3})(\d{3})(\d{3})(\d{2})/', '$1.$2.$3-$4', $this->cpf);
+    }   
+    public function getPhotoUrlAttribute(): string
+    {
+        return asset('storage/' . $this->photo);
+    }
+
 }

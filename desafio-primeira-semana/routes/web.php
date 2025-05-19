@@ -19,6 +19,7 @@ Route::middleware(['auth'])->group(function(){
         Route::delete('/users/{id}',[UserController::class,'destroy'])->name('users.destroy')->middleware('permission:ADMIN');
         Route::post('/users',[UserController::class, 'storeUser'])->name('users.store');
         Route::post('/logout',[LoginController::class,'logout']) -> name('logout');
+
 });
 
 

@@ -16,58 +16,41 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('users')->insert(
-            [
-                [            
-
-                    'name' => 'Administrador',
-                    'email' =>'administrador@exemplo.com',
-                    'password' => Hash::make('123456'),
-                    'permission_level' => PermissionLevel::ADMIN,
-                ],
-                [
-                    'name' => 'Docente',
-                    'email' => 'docente@exemplo.com',
-                    'password' => Hash::make('123456'),
-                    'permission_level'=> PermissionLevel::DOCENTE,
-                ],
-                [
-                    'name' => 'Aluno',
-                    'email' => 'aluno@exemplo.com',
-                    'password' => Hash::make('123456'),
-                    'permission_level'=> PermissionLevel::ALUNO,
-                ],
+            DB::table('users')->insert([
                 [
                     'name' => 'teste',
                     'email' => 'teste@exemplo.com',
                     'password' => Hash::make('123456'),
                     'permission_level' => PermissionLevel::ADMIN,
+                    'cpf' => '66666666666',
+                    'photo' => 'default_photo.png', // Adicione o caminho padrão ou específico da foto
                 ],
                 [
-                    'name' => 'teste2',
-                    'email' => 'teste2@exemplo.com',
+                    'name' => 'Administrador',
+                    'email' => 'administrador@exemplo.com',
                     'password' => Hash::make('123456'),
                     'permission_level' => PermissionLevel::ADMIN,
+                    'cpf' => '11111111111',
+                    'photo' => 'default_photo.png', // Adicione o caminho padrão ou específico da foto
                 ],
                 [
-                    'name' => 'teste3',
-                    'email' => 'teste3@exemplo.com',
+                    'name' => 'Docente',
+                    'email' => 'docente@exemplo.com',
                     'password' => Hash::make('123456'),
-                    'permission_level' => PermissionLevel::ADMIN,
+                    'permission_level' => PermissionLevel::DOCENTE,
+                    'cpf' => '22222222222',
+                    'photo' => 'default_photo.png',
                 ],
                 [
-                    'name' => 'teste4',
-                    'email' => 'teste4@exemplo.com',
+                    'name' => 'Aluno',
+                    'email' => 'aluno@exemplo.com',
                     'password' => Hash::make('123456'),
-                    'permission_level' => PermissionLevel::ADMIN,
+                    'permission_level' => PermissionLevel::ALUNO,
+                    'cpf' => '333333333333',
+                    'photo' => 'default_photo.png',
                 ],
-                [
-                    'name' => 'teste5',
-                    'email' => 'teste5@exemplo.com',
-                    'password' => Hash::make('123456'),
-                    'permission_level' => PermissionLevel::ADMIN,
-                ],
-            ]
-        ); 
+            ]);
     }
 }
+//php artisan migrate:fresh --seed
+//php artisan db:seed --class=UserSeeder

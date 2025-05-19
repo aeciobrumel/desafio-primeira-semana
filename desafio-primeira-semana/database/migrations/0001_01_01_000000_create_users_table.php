@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('cpf')->unique();
+            $table->string('photo')->default('default_photo.png');
             $table->rememberToken();
             $table->timestamps();
             $table->integer('permission_level')->default(3);

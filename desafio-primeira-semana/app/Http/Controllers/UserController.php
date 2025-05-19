@@ -35,8 +35,12 @@ class UserController extends Controller
         $newUser = new User();
         $newUser->name = $input['name'];
         $newUser->email = $input['email'];
+        $newUser->cpf = $input['cpf'];
         $newUser->password = Hash::make($input['password']);
         $newUser->permission_level = $input['permission'];
+        $photo_name = rand(0,999999) . '-' . $request->file('photo_file_name')->getClientOriginalName();
+        $photoPath = $request->file('photo_file_name')->storeAs('uploads', $photo_name, 'public');
+        $newUser->photo = $photoPath;
         $newUser->save();
         return redirect()->route('home')->with('success', 'Usuário cadastrado com sucesso!');
     }
@@ -52,9 +56,14 @@ class UserController extends Controller
         $user = User::findOrFail($id);//busca o usuario
         $user->name = $input['name'];
         $user->email = $input['email'];
+        $user->cpf = $input['cpf'];
         $user->permission_level = $input['permission'] ;
         if (!empty($input['password'])) {
               $user->password= Hash::make($input['password']);
+        }
+        if (!empty($input['photo'])) {
+            $filename = rand(0, 9999) . '_' . $input['photo']->getClientOriginalName();
+            $user->photo = $request->file('photo')->storeAs('photos', $filename, 'public');
         }
         $user->save();
         // Redireciona com mensagem

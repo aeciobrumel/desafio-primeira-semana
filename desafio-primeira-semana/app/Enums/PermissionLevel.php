@@ -13,7 +13,7 @@ enum PermissionLevel:int
         return match ($name) {
             'ADMIN' => self::ADMIN,
             'DOCENTE'=> self::DOCENTE ,
-            'ALUNO'=> self::Aluno,
+            'ALUNO'=> self::ALUNO,
             default => null,
         };
     }
