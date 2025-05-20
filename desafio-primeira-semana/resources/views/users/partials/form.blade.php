@@ -14,7 +14,7 @@
     </div>
     <div class="input-group mb-3">
         <span class="input-group-text" id="inputGroup-sizing-default">cpf:</span>
-        <input id="cpf" maxlength="14" placeholder="000.000.000-00" name="cpf" value="{{old('cpf', $user->getCpfFormattedAttribute() ?? ' ') }}" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"  required>
+        <input id="cpf" placeholder="000.000.000-00" name="cpf" value="{{old('cpf', isset($user) ? $user->getCpfFormattedAttribute() : '') }}" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"  required>
     </div>
     <div class="row">
         <div class="input-group mb-3 col">
@@ -28,11 +28,11 @@
         <div class="input-group mb-3 col">
             <label class="input-group-text" for="inputGroupSelect01">Permissão:</label>            
             <select name="permission" class="form-select" id="inputGroupSelect01">
-                    <option value="" disabled {{ old('permission', $user->permission_level ?? '') == '' ? 'selected' : '' }}>
+                    <option value="" disabled {{ old('permission', isset($user) ? $user->permission_level : '') == '' ? 'selected' : '' }}>
                     Selecione...
                     </option>
                     @foreach($permissions as $permission)
-                    <option value="{{$permission->value}}" {{old('permission', $user->permission_level ?? '')==$permission->value ? 'selected' : '' }}>
+                    <option value="{{$permission->value}}" {{old('permission', isset($user) ? $user->permission_level : '')==$permission->value ? 'selected' : '' }}>
                         {{ $permission -> name }}
                     </option>
                     @endforeach

@@ -44,7 +44,8 @@ class UserController extends Controller
             $photo_name = Str::random(10) . '-' . $photo->getClientOriginalName();
             $photoPath = $photo->storeAs('uploads', $photo_name, 'public');
             $newUser->photo = $photoPath;
-
+        }else {
+            $newUser->photo = '';
         }
         $newUser->save();
         return redirect()->route('home')->with('success', 'Usuário cadastrado com sucesso!');
@@ -66,11 +67,13 @@ class UserController extends Controller
         if (!empty($input['password'])) {
               $user->password= Hash::make($input['password']);
         }
-        if (!empty($input['photo'])) {
+        if ($request->hasFile('photo')){
             $photo = $request->file('photo');
             $photo_name = Str::random(10) . '-' . $photo->getClientOriginalName();
             $photoPath = $photo->storeAs('uploads', $photo_name, 'public');
             $user ->photo = $photoPath;
+        }else {
+            $user->photo = '';
         }
         $user->save();
         // Redireciona com mensagem

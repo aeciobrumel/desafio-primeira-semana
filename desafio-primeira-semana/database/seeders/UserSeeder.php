@@ -23,7 +23,6 @@ class UserSeeder extends Seeder
                     'password' => Hash::make('123456'),
                     'permission_level' => PermissionLevel::ADMIN,
                     'cpf' => '66666666666',
-                    'photo' => 'default_photo.png', // Adicione o caminho padrão ou específico da foto
                 ],
                 [
                     'name' => 'Administrador',
@@ -31,7 +30,6 @@ class UserSeeder extends Seeder
                     'password' => Hash::make('123456'),
                     'permission_level' => PermissionLevel::ADMIN,
                     'cpf' => '11111111111',
-                    'photo' => 'default_photo.png', // Adicione o caminho padrão ou específico da foto
                 ],
                 [
                     'name' => 'Docente',
@@ -39,7 +37,6 @@ class UserSeeder extends Seeder
                     'password' => Hash::make('123456'),
                     'permission_level' => PermissionLevel::DOCENTE,
                     'cpf' => '22222222222',
-                    'photo' => 'default_photo.png',
                 ],
                 [
                     'name' => 'Aluno',
@@ -47,7 +44,6 @@ class UserSeeder extends Seeder
                     'password' => Hash::make('123456'),
                     'permission_level' => PermissionLevel::ALUNO,
                     'cpf' => '333333333333',
-                    'photo' => 'default_photo.png',
                 ],
             ]);
     }

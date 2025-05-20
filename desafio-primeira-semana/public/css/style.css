@@ -276,17 +276,19 @@ card do usuario
 }
 .card-user-left .card-user-img {
     background-color: #ff9e01;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 5px;
-    border-radius: 20px;
+    flex-shrink: 0;
+    overflow: hidden;
 }
 .card-user-left .card-user-img img {
- max-width: 20px;
- max-height: 20px;
-    border-radius: 50%;
-    
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 .card-user-data {
     display: flex;
