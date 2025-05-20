@@ -58,7 +58,7 @@ class User extends Authenticatable
     }   
     public function getPhotoUrlAttribute(): string
     {
-        return asset('storage/' . $this->photo);
+        return $this->photo ? asset('storage/' . $this->photo) : asset('img/user-white.svg');
     }
 
 }

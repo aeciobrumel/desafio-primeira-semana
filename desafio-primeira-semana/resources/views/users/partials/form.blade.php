@@ -14,7 +14,7 @@
     </div>
     <div class="input-group mb-3">
         <span class="input-group-text" id="inputGroup-sizing-default">cpf:</span>
-        <input id="cpf" maxlength="14" placeholder="000.000.000-00" oninput="formatCPF(this)" name="cpf" value="{{old('cpf', $user->getCpfFormattedAttribute() ?? ' ') }}" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"  required>
+        <input id="cpf" maxlength="14" placeholder="000.000.000-00" name="cpf" value="{{old('cpf', $user->getCpfFormattedAttribute() ?? ' ') }}" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"  required>
     </div>
     <div class="row">
         <div class="input-group mb-3 col">

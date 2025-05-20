@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
-use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
+use App\Models\User;
 use App\Http\Requests\UserUpdateStoreRequest;
 use App\Enums\PermissionLevel;
 
@@ -38,9 +39,13 @@ class UserController extends Controller
         $newUser->cpf = $input['cpf'];
         $newUser->password = Hash::make($input['password']);
         $newUser->permission_level = $input['permission'];
-        $photo_name = rand(0,999999) . '-' . $request->file('photo_file_name')->getClientOriginalName();
-        $photoPath = $request->file('photo_file_name')->storeAs('uploads', $photo_name, 'public');
-        $newUser->photo = $photoPath;
+        if($request->hasFile('photo')){
+            $photo = $request->file('photo');
+            $photo_name = Str::random(10) . '-' . $photo->getClientOriginalName();
+            $photoPath = $photo->storeAs('uploads', $photo_name, 'public');
+            $newUser->photo = $photoPath;
+
+        }
         $newUser->save();
         return redirect()->route('home')->with('success', 'Usuário cadastrado com sucesso!');
     }
@@ -62,8 +67,10 @@ class UserController extends Controller
               $user->password= Hash::make($input['password']);
         }
         if (!empty($input['photo'])) {
-            $filename = rand(0, 9999) . '_' . $input['photo']->getClientOriginalName();
-            $user->photo = $request->file('photo')->storeAs('photos', $filename, 'public');
+            $photo = $request->file('photo');
+            $photo_name = Str::random(10) . '-' . $photo->getClientOriginalName();
+            $photoPath = $photo->storeAs('uploads', $photo_name, 'public');
+            $user ->photo = $photoPath;
         }
         $user->save();
         // Redireciona com mensagem

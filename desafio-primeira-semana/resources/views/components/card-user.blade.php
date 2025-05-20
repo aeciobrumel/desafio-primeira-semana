@@ -5,7 +5,7 @@
     <div class="card-user-content">
         <div class="card-user-left">
             <div class="card-user-img">
-                <img src="{{ asset('img/user-white.svg') }}" alt="Foto do usuário">
+                <img src="{{ $photo }}" alt="Foto do usuário">
             </div>
             <div class="card-user-data">
                 <div class="card-user-data-nome">{{ $userName }}</div>

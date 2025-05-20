@@ -26,6 +26,7 @@
                         :userEmail="$user->email" 
                         :userId="$user->id"
                         :permission="$logged->permission_level"
+                        :photo="$user->photo_url"
                     />
             @endforeach
         </div>
@@ -33,5 +34,9 @@
 </div>
 </section>
 @endsection
+<!--
+ docker compose exec laravel php artisan storage:link
+-->
+
 
 

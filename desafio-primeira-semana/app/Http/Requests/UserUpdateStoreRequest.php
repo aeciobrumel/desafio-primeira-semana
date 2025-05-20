@@ -32,7 +32,7 @@ class UserUpdateStoreRequest extends FormRequest
             'permission' => ['required',new Enum(PermissionLevel::class)],
             'email' => 'required|email|unique:users,email' .($userId ? ',' . $userId : ''),
             'cpf' => 'required|string|digits:11|unique:users,cpf' .($userId ? ',' . $userId : ''),
-            'photo' => 'image|mimes:jpeg,png,jpg|max:2048',
+            'photo' => 'image|mimes:jpeg,png,jpg,svg|max:2048',
 
 
         ];  //se email tiver user id anula ele
