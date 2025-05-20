@@ -84,5 +84,26 @@ class UserController extends Controller
         User::destroy($id);
         return redirect()->route('home')->with('success', 'Usuário deletado com sucesso!');
     }
-    
-}
+    //primeiro login
+    public function editPassword(Request $request){
+        $user = $request->user();
+        return view('updatePassword', compact('user'));
+    }
+    public function updatePassword(Request $request){
+        $request->validate([
+            'password' => ['required', 'string', 'min:8', 'same:password_confirmation'],
+            'password_confirmation' => ['required', 'string', 'min:8'],
+        ]);
+        $user = $request->user();
+        $user->password = Hash::make($request->password);
+        $user->first_login = false;
+        $user->save();
+
+        $request->session()->regenerate();
+        return redirect()->route('home')->with('success', 'Senha atualizada com sucesso!');
+
+    }
+
+}   
+
+

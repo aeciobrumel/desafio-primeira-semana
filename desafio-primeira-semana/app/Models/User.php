@@ -28,6 +28,7 @@ class User extends Authenticatable
         'password',
         'photo',
         'permission_level',
+        'first_login'
     ];
     /**
      * The attributes that should be hidden for serialization.
@@ -50,6 +51,7 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
             'permission_level' => PermissionLevel::class,
+            'first_login' => 'boolean',
         ];
     }
     public function getCpfFormattedAttribute(): string

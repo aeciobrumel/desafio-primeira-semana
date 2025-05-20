@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('cpf')->unique();
             $table->string('photo')->nullable();
+            $table->boolean('first_login')->default(true);
             $table->rememberToken();
             $table->timestamps();
             $table->integer('permission_level')->default(3);

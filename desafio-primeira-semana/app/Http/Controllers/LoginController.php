@@ -19,9 +19,12 @@ class LoginController extends Controller
             'email' => ['required', 'email'],
             'password' => ['required'],
         ]);
-        if (Auth::attempt($credentials)) {
+        if (Auth::attempt($credentials) && Auth::user()->first_login == false) {
             $request->session()->regenerate();
             return redirect()->intended('home')->with('login-success', true);
+        }
+        if(Auth::attempt($credentials) && Auth::user()->first_login == true){
+            return redirect()->route('password.edit');
         }
         return back()->with('login-error',true)->withErrors([
             'email' => 'credenciais inválidas.',

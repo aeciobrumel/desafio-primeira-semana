@@ -23,6 +23,7 @@ class UserSeeder extends Seeder
                     'password' => Hash::make('123456'),
                     'permission_level' => PermissionLevel::ADMIN,
                     'cpf' => '66666666666',
+                    'first_login' => false,
                 ],
                 [
                     'name' => 'Administrador',
@@ -30,6 +31,8 @@ class UserSeeder extends Seeder
                     'password' => Hash::make('123456'),
                     'permission_level' => PermissionLevel::ADMIN,
                     'cpf' => '11111111111',
+                    'first_login' => false,
+
                 ],
                 [
                     'name' => 'Docente',
@@ -37,6 +40,8 @@ class UserSeeder extends Seeder
                     'password' => Hash::make('123456'),
                     'permission_level' => PermissionLevel::DOCENTE,
                     'cpf' => '22222222222',
+                    'first_login' => true,
+
                 ],
                 [
                     'name' => 'Aluno',
@@ -44,6 +49,7 @@ class UserSeeder extends Seeder
                     'password' => Hash::make('123456'),
                     'permission_level' => PermissionLevel::ALUNO,
                     'cpf' => '333333333333',
+                    'first_login' => true,
                 ],
             ]);
     }
