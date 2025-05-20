@@ -236,8 +236,7 @@ cabeçario lista de usuarios
 /*
 formulario
 */
-.form-cadastro {
-    background-color: #025557;
+.form-cadastro-inputs {
     margin-left: 30px;
     margin-right: 30px;
     padding: 30px;
@@ -249,9 +248,68 @@ formulario
     justify-content: center;
     align-items: center;
 }
-.form-cadastro .container-btn .btn-enviar-usuario {
+.form-cadastro .btn-enviar-usuario {
+    margin-top: 10px;
     background-color: #038291;
     border-radius: 20px;
+}
+
+/*
+conteiner avatar do formulario
+*/
+.form-border-content {
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 15px;
+}
+.avatar-container {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+    margin: 0 auto;
+    background-color: #ebebeb;
+    padding: 1rem;
+    border-radius: 8px;
+    flex-direction: row;
+}
+
+.input-group-text {
+    background-color: #ebebeb;
+    border: none;
+    min-width: 70px;
+    display: flex;
+    justify-content: center;
+}
+
+.avatar-right {
+    flex: 1;
+}
+.avatar-left {
+    flex-direction: column;
+    flex: 2;
+    align-items: center;
+}
+/* Avatar */
+.form-user-avatar {
+    max-width: 100%;
+    max-height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+}
+.form-user-avatar img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 100px;
+    background-color: #ff9e01;
+}
+
+.avatar-input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 5px;
 }
 
 /*
