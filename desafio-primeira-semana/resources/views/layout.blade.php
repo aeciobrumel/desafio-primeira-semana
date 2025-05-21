@@ -19,7 +19,7 @@
 </head>
 <body>
     @if ($errors->any())
-        <div class="alert alert-danger alert-dismissible fade show" role="alert" id="floating-alert">
+        <div class="alert alert-danger alert-dismissible fade show floating-alert" role="alert" id="floating-alert">
             <ul class="mb-0">
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
@@ -28,6 +28,12 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fechar"></button>
         </div>
     @endif
+    @if (session('success'))
+    <div class="alert alert-success floating-alert mt-2">
+        {{ session('success') }}
+    </div>
+    @endif
+
     <main>
     @yield('content')
         <x-modal id="login-error-modal" message="Erro no login" />
@@ -125,7 +131,7 @@
 
                 reader.readAsDataURL(file);
             }
-        }); 
+          }); 
   </script>
 </body>
 </html>
