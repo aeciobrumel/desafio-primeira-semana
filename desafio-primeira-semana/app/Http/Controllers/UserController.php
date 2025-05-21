@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use App\Models\User;
 use App\Http\Requests\UserUpdateStoreRequest;
+use App\Http\Requests\UpdatePasswordRequest;
 use App\Enums\PermissionLevel;
 
 
@@ -84,26 +85,21 @@ class UserController extends Controller
         User::destroy($id);
         return redirect()->route('home')->with('success', 'Usuário deletado com sucesso!');
     }
-    //primeiro login
+    // troca de senha no primeiro login
     public function editPassword(Request $request){
         $user = $request->user();
         return view('updatePassword', compact('user'));
     }
-    public function updatePassword(Request $request){
-        $request->validate([
-            'password' => ['required', 'string', 'min:8', 'same:password_confirmation'],
-            'password_confirmation' => ['required', 'string', 'min:8'],
-        ]);
-        $user = $request->user();
-        $user->password = Hash::make($request->password);
-        $user->first_login = false;
-        $user->save();
-
+    public function updatePassword(UpdatePasswordRequest $request){
+            $input = $request->validated();
+            $user = $request->user();
+            $user->password = Hash::make($input['password']);
+            $user->first_login = false;
+            $user->save();
         $request->session()->regenerate();
         return redirect()->route('home')->with('success', 'Senha atualizada com sucesso!');
 
     }
 
-}   
-
+}
 
