@@ -48,7 +48,7 @@ class UserUpdateStoreRequest extends FormRequest
         }
         return $data;
     }
-    public function messages(): array
+    public function messages(): array 
     {
         return [
             'name.required' => 'O campo nome é obrigatório.',

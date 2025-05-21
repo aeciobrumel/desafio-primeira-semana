@@ -15,6 +15,11 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'permission'=> HasPermission::class
         ]);
+        $middleware->web([
+            \Illuminate\Session\Middleware\StartSession::class,
+            \Illuminate\View\Middleware\ShareErrorsFromSession::class,
+        ]);
+
         //
     })
     ->withExceptions(function (Exceptions $exceptions) {

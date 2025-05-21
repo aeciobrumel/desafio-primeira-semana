@@ -63,7 +63,7 @@ class UserController extends Controller
         $user = User::findOrFail($id);//busca o usuario
         $user->name = $input['name'];
         $user->email = $input['email'];
-        $user->cpf = $input['cpf'];
+                 $user->cpf = $input['cpf'];
         $user->permission_level = $input['permission'] ;
         if (!empty($input['password'])) {
               $user->password= Hash::make($input['password']);
@@ -73,8 +73,6 @@ class UserController extends Controller
             $photo_name = Str::random(10) . '-' . $photo->getClientOriginalName();
             $photoPath = $photo->storeAs('uploads', $photo_name, 'public');
             $user ->photo = $photoPath;
-        }else {
-            $user->photo = '';
         }
         $user->save();
         // Redireciona com mensagem

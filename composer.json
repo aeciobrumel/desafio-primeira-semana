@@ -1,0 +1,5 @@
+{
+    "require": {
+        "lab404/laravel-impersonate": "^1.7"
+    }
+}

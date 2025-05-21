@@ -12,6 +12,10 @@ Route::post('/login', [LoginController::class, 'authenticate']) -> name ('authen
 //Middleware Auth para segurança
 Route::middleware(['auth'])->group(function(){
         //passando lista de usuários para home
+        //perasonate ja faz a de entrar e sair de um usuário
+        // Route::get('/impersonate/{id}', [UserController::class, 'impersonate'])->name('impersonate');
+        // Route::get('/impersonate/leave', [UserController::class, 'leaveImpersonate'])->name('impersonate.leave');
+        //direto no ::impersonate()
         Route::get('/home', [UserController::class, 'userList'])->name ('home');
         Route::get('/users/create', [UserController::class,'showCreateForm'])->name('users.create')->middleware('permission:ADMIN,DOCENTE');
         Route::get('/users/{id}/edit',[UserController::class,'editUser'])->name('users.edit')->middleware('permission:ADMIN,DOCENTE');
@@ -21,8 +25,10 @@ Route::middleware(['auth'])->group(function(){
         Route::post('/logout',[LoginController::class,'logout']) -> name('logout');
         Route::get('/password/change', [UserController::class,'editPassword'])->name('password.edit');
         Route::put('/password/change', [UserController::class,'updatePassword'])->name('password.update');
+        Route::impersonate();
+
+     
 
 });
-
 
 

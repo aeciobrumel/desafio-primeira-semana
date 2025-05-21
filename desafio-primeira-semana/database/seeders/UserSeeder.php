@@ -51,6 +51,22 @@ class UserSeeder extends Seeder
                     'cpf' => '333333333333',
                     'first_login' => true,
                 ],
+                [
+                'name' => 'Usuário Teste 1',
+                'email' => 'teste1@exemplo.com',
+                'password' => Hash::make('123456'),
+                'permission_level' => PermissionLevel::ALUNO,
+                'cpf' => '44444444444',
+                'first_login' => true,
+                ],
+                [
+                'name' => 'Usuário Teste 2',
+                'email' => 'teste2@exemplo.com',
+                'password' => Hash::make('123456'),
+                'permission_level' => PermissionLevel::DOCENTE,
+                'cpf' => '55555555555',
+                'first_login' => false,
+                ],
             ]);
     }
 }
