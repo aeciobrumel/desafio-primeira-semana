@@ -17,13 +17,13 @@
             <a class="btn-impersonate-user"  href="{{route('impersonate', $userId)}}"><img src="{{ asset('img/eye.svg') }}" alt="Ver"></a>
         @endif
         @if(in_array($permission,[PermissionLevel::ADMIN , PermissionLevel::DOCENTE]))
-            <a class="btn-edit-user"  href="{{route('users.edit', $userId)}}"><img src="{{ asset('img/note-pencil.svg') }}" alt="Editar"></a>
+            <a class="btn-edit-user padraofundo"  href="{{route('users.edit', $userId)}}"><img src="{{ asset('img/note-pencil.svg') }}" alt="Editar"></a>
         @endif
         @if($permission === PermissionLevel::ADMIN)
             <form action="{{route ('users.destroy',$userId)}}" method="post">
                 @csrf
                 @method('DELETE')
-                <button class="btn-delete-user"><img src="{{ asset('img/trash.svg') }}" alt="Excluir"></button>
+                <button class="btn-delete-user padraofundo"><img src="{{ asset('img/trash.svg') }}" alt="Excluir"></button>
             </form>
         @endif
         </div>

@@ -61,7 +61,7 @@
     
     
     <div class="container-btn">
-        <button type="submit" class="btn btn-primary btn-enviar-usuario">
+        <button type="submit" class="btn btn-primary btn-enviar-usuario padraofundo">
         {{ isset($user) ? 'Editar usuário' : 'Cadastrar usuário'}}
         </button>
     </div>

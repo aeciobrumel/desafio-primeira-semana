@@ -21,9 +21,6 @@ Route::middleware(['auth'])->group(function(){
         Route::get('/password/change', [UserController::class,'editPassword'])->name('password.edit');
         Route::put('/password/change', [UserController::class,'updatePassword'])->name('password.update');
         Route::impersonate();
-
-     
-
 });
 
 

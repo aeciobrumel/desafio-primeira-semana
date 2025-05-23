@@ -14,9 +14,9 @@
                     <input id="cpf" oninput="formatCPF(this)" maxlength=14 placeholder="CPF" name="cpf" value="{{ old('cpf', $user->cpf ?? '') }}" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"  required>
                 </div>
                 <div class="form-group">
-                    <input type="password"  name="password" class="form-control form-control-sm" id="exampleInputPassword1" placeholder="SENHA" require>
+                    <input type="password"  name="password" class="form-control form-control" id="exampleInputPassword1" placeholder="SENHA" require>
                 </div>
-                <button type="submit" class="btn btn-primary">
+                <button type="submit padraofundo" class="btn btn-primary">
                     <span id="buttonText">Acesse agora</span>    
                 </button>
                 <a href="#">Esqueci meu e-mail ou senha</a>
@@ -49,5 +49,4 @@
         input.value = value;
         }
 </script>
-
 @endsection

@@ -22,7 +22,7 @@ class LoginController extends Controller
             if(Auth::attempt($credentials)){
                 $request->session()->regenerate();
                 if(Auth::user()->first_login == true){
-                    return redirect()->route('password.edit');
+                    return redirect()->route('password.edit')->with('new-password',true);
                 }
                     return redirect()->intended('home')->with('login-sucess',true);
             }

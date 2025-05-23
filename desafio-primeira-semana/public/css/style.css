@@ -47,7 +47,8 @@
 .form-login button {
     color: #025557;
     background-color: #ffffff;
-    border-radius: 15px;
+    padding: 10px 20px 10px 20px;
+    border-radius: 30px;
     margin-top: 30px;
     margin-bottom: 10px;
     border: 0px solid #025557;
@@ -56,7 +57,6 @@
 .form-login button:focus,
 .form-login button:active {
     color: #ffffff;
-    background-color: #025557;
 }
 
 #eja-logo-login {
@@ -100,6 +100,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
 }
 .modal-body p {
     font-size: 25px;
@@ -170,11 +171,11 @@
 }
 .nav-items .button-nav-left:hover {
     border: none;
-    background-color: #0b5f68;
+    background-color: #ff9e01;
     border-radius: 40px;
 }
 .nav-items .btn-logout:hover {
-    background-color: #cf3e24;
+    background-color: #ff9e01;
 }
 
 .home-right {
@@ -191,6 +192,9 @@ cabeçario lista de usuarios
 .impersonate-user-leave {
     border-radius: 20px;
     padding: 5px;
+}
+.text-impersonate-user {
+    color: #e01b24;
 }
 .userlist-section-content-header {
     display: flex;
@@ -275,6 +279,7 @@ formulario
 .form-cadastro .btn-enviar-usuario {
     margin-top: 10px;
     background-color: #038291;
+    border-color: #038291;
     border-radius: 20px;
 }
 /*
@@ -414,7 +419,10 @@ card do usuario
 .btn-delete-user:hover {
     background-color: #ac341e;
 }
-
+.padraofundo:hover {
+    background-color: #ff9e01;
+    border-color: #ff9e01;
+}
 /*
 
 ERRO

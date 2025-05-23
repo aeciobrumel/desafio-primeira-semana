@@ -15,8 +15,8 @@
                 <img class="user-three-img" src="{{asset('img/users-three.svg')}}" alt="">
                 <h1>Usuários</h1>
                 @if(in_array($logged -> permission_level,[ PermissionLevel::ADMIN , PermissionLevel::DOCENTE]))
-                    <button class="btn-add-user" onclick="goTocreateUserForm()">
-                        <img id='add-user' class="plus-img" src="{{asset('img/plus.svg')}}" alt="">
+                    <button class="btn-add-user  " onclick="goTocreateUserForm()">
+                        <img id='add-user' class="plus-img padraofundo" src="{{asset('img/plus.svg')}}" alt="">
                     </button>
                 @endif
             </div>

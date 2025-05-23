@@ -38,6 +38,8 @@
     @yield('content')
         <x-modal id="login-error-modal" message="Erro no login" />
         <x-modal id="login-success-modal" message="Bem vindo a nossa plataforma!" />
+        <x-modal id="new-password-modal" message="Você precisa atualizar sua senha no primeiro login" />
+
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script>
@@ -50,6 +52,10 @@
 
               @if(session('login-success'))
                   var sucessModal = new bootstrap.Modal(document.getElementById('login-success-modal'));
+                  sucessModal.show();
+              @endif
+              @if(session('new-password'))
+                  var sucessModal = new bootstrap.Modal(document.getElementById('new-password-modal'));
                   sucessModal.show();
               @endif
           }

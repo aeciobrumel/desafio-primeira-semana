@@ -67,6 +67,7 @@ class UserController extends Controller
         $user->permission_level = $input['permission'] ;
         if (!empty($input['password'])) {
               $user->password= Hash::make($input['password']);
+              $user->first_login = true;
         }
         if ($request->hasFile('photo')){
             $photo = $request->file('photo');
@@ -85,7 +86,7 @@ class UserController extends Controller
     }
     // troca de senha no primeiro login
     public function editPassword(Request $request){
-        $user = $request->user();
+        $user = $request->user();   
         return view('updatePassword', compact('user'));
     }
     public function updatePassword(UpdatePasswordRequest $request){
@@ -94,9 +95,8 @@ class UserController extends Controller
             $user->password = Hash::make($input['password']);
             $user->first_login = false;
             $user->save();
-        $request->session()->regenerate();
-        return redirect()->route('home')->with('success', 'Senha atualizada com sucesso!');
-
+            $request->session()->regenerate();
+            return redirect()->route('home')->with('success', 'Senha atualizada com sucesso!');
     }
 
 }
