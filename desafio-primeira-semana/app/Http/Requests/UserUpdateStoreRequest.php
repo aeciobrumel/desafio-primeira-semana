@@ -2,8 +2,11 @@
 
 namespace App\Http\Requests;
 use Illuminate\Validation\Rules\Enum;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Http\FormRequest;
 use App\Enums\PermissionLevel;
+use App\Models\User;
+        
 
 class UserUpdateStoreRequest extends FormRequest
 {

@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\LoginRequest;
+use App\Models\User;
+
 
 class LoginController extends Controller
 {
@@ -13,22 +16,20 @@ class LoginController extends Controller
         return view('loginView');
     }
     //função que realiza a autenticação do usuário
-    public function authenticate(Request $request): RedirectResponse
+    public function authenticate(LoginRequest $request): RedirectResponse
     {
-        $credentials = $request->validate([
-            'email' => ['required', 'email'],
-            'password' => ['required'],
-        ]);
-        if (Auth::attempt($credentials) && Auth::user()->first_login == false) {
-            $request->session()->regenerate();
-            return redirect()->intended('home')->with('login-success', true);
-        }
-        if(Auth::attempt($credentials) && Auth::user()->first_login == true){
-            return redirect()->route('password.edit');
-        }
-        return back()->with('login-error',true)->withErrors([
-            'email' => 'credenciais inválidas.',
-        ])->onlyInput('email');
+        $credentials = $request->validated();
+            if(Auth::attempt($credentials)){
+                $request->session()->regenerate();
+                if(Auth::user()->first_login == true){
+                    return redirect()->route('password.edit');
+                }
+                    return redirect()->intended('home')->with('login-sucess',true);
+            }
+            return back()
+            ->with('login-error',true)
+            ->withErrors(['cpf' => 'credenciais inválidas.',])
+            ->onlyInput('cpf');
     }
     //logout
     public function logout(Request $request): RedirectResponse

@@ -11,7 +11,7 @@
                 @csrf
                 <p class="text-center">FAÇA SEU LOGIN</p>
                 <div class="form-group">
-                    <input type="email" name="email" class="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="LOGIN" required>
+                    <input id="cpf" oninput="formatCPF(this)" maxlength=14 placeholder="CPF" name="cpf" value="{{ old('cpf', $user->cpf ?? '') }}" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"  required>
                 </div>
                 <div class="form-group">
                     <input type="password"  name="password" class="form-control form-control-sm" id="exampleInputPassword1" placeholder="SENHA" require>
@@ -40,4 +40,14 @@
         </div>
     </div>
 </section>
+<script>
+      function formatCPF(input) {
+        let value = input.value.replace(/\D/g, ""); // Remove caracteres não numéricos
+        value = value.replace(/(\d{3})(\d)/, "$1.$2"); // Adiciona o primeiro ponto
+        value = value.replace(/(\d{3})(\d)/, "$1.$2"); // Adiciona o segundo ponto
+        value = value.replace(/(\d{3})(\d{1,2})$/, "$1-$2"); // Adiciona o traço
+        input.value = value;
+        }
+</script>
+
 @endsection
