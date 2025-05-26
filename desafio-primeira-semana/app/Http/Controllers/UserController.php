@@ -19,11 +19,26 @@ class UserController extends Controller
     //listar usuarios na home
     public function userList(){
         $logged = Auth::user();
-        $users = User::where('id', '!=', $logged->id)->get();         
         $permissions = PermissionLevel::cases();
-        //seleciono todos os users do banco
-        return view('homeView',compact('users', 'logged','permissions'));//passo todos os usuários pra home (menos o logado)
-    }        
+
+        if($logged->permission_level === PermissionLevel::ADMIN){
+            $users = User::where('id', '!=', $logged->id)
+                         ->get();
+        }        
+        elseif($logged->permission_level === PermissionLevel::DOCENTE){
+            $users = User::where('id', '!=', $logged->id)
+                         ->where('permission_level', '!=', PermissionLevel::ADMIN)
+                         ->get();
+        }
+        else {
+            $users = User::where('id', '!=', $logged->id)
+                         ->where('permission_level', '=', PermissionLevel::ALUNO)
+                         ->get();
+        }
+        return view('homeView', compact('users', 'logged', 'permissions'));
+
+
+    }
     //rota para criar usuario
     public function showCreateForm(){
         $logged = Auth::user();

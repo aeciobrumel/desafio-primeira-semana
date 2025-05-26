@@ -13,14 +13,15 @@ class CardUser extends Component
     public string $userEmail;
     public int $userId;
     public string $photo;
-    public PermissionLevel $permission;
-    
-    public function __construct( string $userName, string $userEmail,int $userId, PermissionLevel $permission, string $photo)
+    public PermissionLevel $permission, $userPermissionLevel;
+
+    public function __construct( string $userName, string $userEmail,int $userId, PermissionLevel $permission,PermissionLevel $userPermissionLevel, string $photo)
       {
           $this->userName = $userName;
           $this->userEmail = $userEmail;
           $this->userId = $userId;
           $this->permission = $permission;
+          $this->userPermissionLevel = $userPermissionLevel;
           $this->photo = $photo;
       }
   

@@ -39,6 +39,7 @@
                         :userId="$user->id"
                         :permission="$logged->permission_level"
                         :photo="$user->photo_url"
+                        :userPermissionLevel="$user->permission_level"
                     />
             @endforeach
         </div>

@@ -13,7 +13,11 @@
             </div>
         </div>
         <div class="card-user-right">
-        @if($permission === PermissionLevel::ADMIN && !app('impersonate')->isImpersonating()   )
+        @if(
+            $permission === PermissionLevel::ADMIN && !app('impersonate')->isImpersonating()
+         ||
+          $permission === PermissionLevel::DOCENTE && $userPermissionLevel === PermissionLevel::ALUNO && !app('impersonate')->isImpersonating()
+          )
             <a class="btn-impersonate-user"  href="{{route('impersonate', $userId)}}"><img src="{{ asset('img/eye.svg') }}" alt="Ver"></a>
         @endif
         @if(in_array($permission,[PermissionLevel::ADMIN , PermissionLevel::DOCENTE]))
