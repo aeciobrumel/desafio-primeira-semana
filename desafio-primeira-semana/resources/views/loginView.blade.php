@@ -16,7 +16,7 @@
                 <div class="form-group">
                     <input type="password"  name="password" class="form-control form-control" id="exampleInputPassword1" placeholder="SENHA" require>
                 </div>
-                <button type="submit padraofundo" class="btn btn-primary">
+                <button type="submit" class="btn btn-primary padraofundo">
                     <span id="buttonText">Acesse agora</span>    
                 </button>
                 <a href="#">Esqueci meu e-mail ou senha</a>
